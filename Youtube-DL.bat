@@ -46,6 +46,8 @@ CLS
 GOTO menu
 
 :update
+ECHO Current version is 
+%YOUTUBEDLLOCATION% --version
 %YOUTUBEDLLOCATION% --update
 TIMEOUT /T 3 /NOBREAK > NUL
 CLS
