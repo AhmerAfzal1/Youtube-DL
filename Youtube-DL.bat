@@ -17,14 +17,16 @@ SET VIDEOARGS="(bestvideo[vcodec^=av01][height>=3072][fps>30]/bestvideo[vcodec=v
 ECHO.
 ECHO [1] Download Videos
 ECHO [2] Download Audios
-ECHO [3] EXIT
+ECHO [3] Update Youtube-DL
+ECHO [4] EXIT
 ECHO.
 SET CHOICE=0
 SET /P CHOICE="Please choose one option: 
 ECHO.
 IF "%CHOICE%"=="1" GOTO video
 IF "%CHOICE%"=="2" GOTO audio
-IF "%CHOICE%"=="3" GOTO exit
+IF "%CHOICE%"=="3" GOTO update
+IF "%CHOICE%"=="4" GOTO :EOF
 ECHO.
 ECHO Invalid option
 TIMEOUT /T 2 /NOBREAK > NUL
@@ -42,7 +44,10 @@ ECHO.
 ECHO Under progress....
 ECHO.
 TIMEOUT /T 5 /NOBREAK
-GOTO menu
+GOTO 
 
-:exit
-exit
+:update
+%YOUTUBEDLLOCATION% --update
+TIMEOUT /T 3 /NOBREAK > NUL
+CLS
+GOTO menu
