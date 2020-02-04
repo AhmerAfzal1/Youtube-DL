@@ -34,17 +34,16 @@ CLS
 GOTO menu
 
 :video
-%YOUTUBEDLLOCATION% --no-check-certificate --ignore-errors --ignore-config --continue --no-part --add-metadata --all-subs --embed-subs --format %VIDEOARGS%+%AUDIOARGS% --output "%DOWNLOADLOCATION%%%(title)s.%%(ext)s" --batch-file %BATCHFILE% --download-archive "Downloaded.log" --ffmpeg-location %FFMPEGLOCATION% --merge-output-format %MERGEOUTPUTFORMAT%
+%YOUTUBEDLLOCATION% --no-check-certificate --ignore-errors --ignore-config --continue --newline --no-part --add-metadata --all-subs --embed-subs --format %VIDEOARGS%+%AUDIOARGS% --output "%DOWNLOADLOCATION%%%(title)s.%%(ext)s" --batch-file %BATCHFILE% --download-archive "Downloaded.log" --ffmpeg-location %FFMPEGLOCATION% --merge-output-format %MERGEOUTPUTFORMAT%
 ECHO.
 CLS
 GOTO menu
 
 :audio
+%YOUTUBEDLLOCATION% --no-check-certificate --ignore-errors --ignore-config --continue newline --no-part --add-metadata --all-subs --embed-thumbnail --embed-subs -x --audio-format "mp3" --audio-quality 0 --output "%DOWNLOADLOCATION%%%(title)s.%%(ext)s" --batch-file %BATCHFILE% --download-archive "Downloaded.log" --ffmpeg-location %FFMPEGLOCATION% --merge-output-format %MERGEOUTPUTFORMAT%
 ECHO.
-ECHO Under progress....
-ECHO.
-TIMEOUT /T 5 /NOBREAK
-GOTO 
+CLS
+GOTO menu
 
 :update
 %YOUTUBEDLLOCATION% --update
