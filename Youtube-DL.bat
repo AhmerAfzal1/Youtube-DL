@@ -21,7 +21,7 @@ SET VIDMP4AHMER="bestvideo[height<=720][fps<60][ext=mp4]+bestaudio[ext=m4a]/mp4"
 
 :menu
 ECHO.
-ECHO [1] Download Videos MP4 (99% full HD)
+ECHO [1] Download Videos MP4 (99%% full HD)
 ECHO.
 ECHO [2] Download Videos Full HD (File convert into MKV)
 ECHO.
