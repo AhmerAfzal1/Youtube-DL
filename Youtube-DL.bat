@@ -21,9 +21,9 @@ SET VIDMP4AHMER="bestvideo[height<=720][fps<60][ext=mp4]+bestaudio[ext=m4a]/mp4"
 
 :menu
 ECHO.
-ECHO [1] Download Videos Full HD (Convert into MKV)
+ECHO [1] Download Videos MP4 (99% full HD)
 ECHO.
-ECHO [2] Download Videos MP4 (May not full HD)
+ECHO [2] Download Videos Full HD (File convert into MKV)
 ECHO.
 ECHO [3] Download Audios (MP3)
 ECHO.
@@ -37,8 +37,8 @@ ECHO.
 SET CHOICE=0
 SET /P CHOICE="Please choose one option: 
 ECHO.
-IF "%CHOICE%"=="1" GOTO MKV
-IF "%CHOICE%"=="2" GOTO MP4
+IF "%CHOICE%"=="1" GOTO MP4
+IF "%CHOICE%"=="2" GOTO MKV
 IF "%CHOICE%"=="3" GOTO MP3
 IF "%CHOICE%"=="4" GOTO AHMER
 IF "%CHOICE%"=="5" GOTO UPDATE
@@ -50,7 +50,7 @@ CLS
 GOTO menu
 
 :MKV
-%YOUTUBEDLLOCATION% --no-check-certificate --ignore-errors --ignore-config --continue --yes-playlist --prefer-ffmpeg --no-part --add-metadata --format %NEWARG% --output "%DOWNLOADLOCATION%%%(id)s" --batch-file %BATCHFILE% --download-archive %ARCHIVE% --merge-output-format "mkv" --ffmpeg-location %FFMPEGLOCATION%
+%YOUTUBEDLLOCATION% --no-check-certificate --ignore-errors --ignore-config --continue --yes-playlist --prefer-ffmpeg --no-part --add-metadata --format %NEWARG% --output "%DOWNLOADLOCATION%%%(title)s.%%(ext)s" --batch-file %BATCHFILE% --download-archive %ARCHIVE% --merge-output-format "mkv" --ffmpeg-location %FFMPEGLOCATION%
 ECHO.
 TIMEOUT /T 6 /NOBREAK > NUL
 CLS
@@ -70,7 +70,7 @@ CLS
 GOTO menu
 
 :AHMER
-%YOUTUBEDLLOCATION% --no-check-certificate --ignore-errors --ignore-config --continue --yes-playlist --prefer-ffmpeg --no-part --add-metadata --format %VIDMP4AHMER% --output "%DOWNLOADLOCATION%%%(title)s.%%(ext)s" --batch-file %BATCHFILE% --download-archive %ARCHIVE% --merge-output-format "mp4" --ffmpeg-location %FFMPEGLOCATION%
+%YOUTUBEDLLOCATION% --no-check-certificate --ignore-errors --ignore-config --continue --yes-playlist --prefer-ffmpeg --no-part --add-metadata --format %VIDMP4AHMER% --output "%DOWNLOADLOCATION%%%(id)s" --batch-file %BATCHFILE% --download-archive %ARCHIVE% --merge-output-format "mp4" --ffmpeg-location %FFMPEGLOCATION%
 ECHO.
 TIMEOUT /T 6 /NOBREAK > NUL
 CLS
@@ -80,6 +80,6 @@ GOTO menu
 ECHO Current version is 
 %YOUTUBEDLLOCATION% --version
 %YOUTUBEDLLOCATION% --update
-TIMEOUT /T 3 /NOBREAK > NUL
+TIMEOUT /T 6 /NOBREAK > NUL
 CLS
 GOTO menu
