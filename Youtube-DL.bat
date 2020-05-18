@@ -17,6 +17,8 @@ SET NEWARG="bestvideo[ext=webm][height>=4320][fps=60]+bestaudio/bestvideo[ext=mp
 
 SET VIDMP4AHMER="bestvideo[height<=720][fps<=60][ext=mp4]+bestaudio[ext=m4a]/mp4"
 
+IF NOT EXIST %DOWNLOADLOCATION% MKDIR %DOWNLOADLOCATION%
+
 :menu
 ECHO.
 ECHO [1] Download HD Videos in MP4
