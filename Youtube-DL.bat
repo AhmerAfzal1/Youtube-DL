@@ -1,3 +1,4 @@
+CHCP 65001
 @ECHO OFF
 SETLOCAL ENABLEDELAYEDEXPANSION
 CLS
@@ -21,21 +22,26 @@ IF NOT EXIST %DOWNLOADLOCATION% MKDIR %DOWNLOADLOCATION%
 
 :menu
 ECHO.
-ECHO [1] Download HD Videos in MP4
-ECHO.
-ECHO [2] Download Full HD Videos in MKV
-ECHO.
-ECHO [3] Download Audios (MP3)
-ECHO.
-ECHO [4] 720P in MP4 For Ahmer Afzal
-ECHO.
-ECHO [5] Update Youtube-DL
-ECHO.
-ECHO [6] EXIT
-
+ECHO     ╔══════════════════════════════════════════════════════╗
+ECHO     ║                                                      ║
+ECHO     ║  Download HD Videos Using Youtube-DL by Ahmer Afzal  ║
+ECHO     ║                                                      ║
+ECHO     ║──────────────────────────────────────────────────────║
+ECHO     ║  [1] Download HD Videos in MP4                       ║
+ECHO     ║                                                      ║
+ECHO     ║  [2] Download Full HD Videos in MKV                  ║
+ECHO     ║                                                      ║
+ECHO     ║  [3] Download Audios (MP3)                           ║
+ECHO     ║                                                      ║
+ECHO     ║  [4] 720P in MP4 For Ahmer Afzal                     ║
+ECHO     ║                                                      ║
+ECHO     ║  [5] Update Youtube-DL                               ║
+ECHO     ║                                                      ║
+ECHO     ║  [6] EXIT                                            ║
+ECHO     ╚══════════════════════════════════════════════════════╝
 ECHO.
 SET CHOICE=0
-SET /P CHOICE="Please choose one option: 
+SET /P CHOICE="Please choose one option: "
 ECHO.
 IF "%CHOICE%"=="1" GOTO MP4
 IF "%CHOICE%"=="2" GOTO MKV
@@ -50,7 +56,7 @@ CLS
 GOTO menu
 
 :MKV
-%YOUTUBEDLLOCATION% --no-check-certificate --ignore-errors --ignore-config --continue --yes-playlist --prefer-ffmpeg --no-part --add-metadata --format %NEWARG% --output "%DOWNLOADLOCATION%%%(title)s.%%(ext)s" --batch-file %BATCHFILE% --download-archive %ARCHIVE% --merge-output-format "mkv" --ffmpeg-location %FFMPEGLOCATION%
+%YOUTUBEDLLOCATION% --no-check-certificate --ignore-errors --ignore-config --continue --yes-playlist --prefer-ffmpeg --no-part --add-metadata --format %NEWARG% --output "%DOWNLOADLOCATION%%%(uploader)s//%%(title)s.%%(ext)s" --batch-file %BATCHFILE% --download-archive %ARCHIVE% --merge-output-format "mkv" --ffmpeg-location %FFMPEGLOCATION%
 ECHO.
 TIMEOUT /T 6 /NOBREAK > NUL
 CLS
@@ -64,13 +70,13 @@ CLS
 GOTO menu
 
 :MP3
-%YOUTUBEDLLOCATION% --no-check-certificate --ignore-errors --ignore-config --continue --yes-playlist --no-part --add-metadata --all-subs --embed-thumbnail --embed-subs -x --audio-format "mp3" --audio-quality 0 --output "%DOWNLOADLOCATION%%%(title)s.%%(ext)s" --batch-file %BATCHFILE% --download-archive %ARCHIVE% --ffmpeg-location %FFMPEGLOCATION%
+%YOUTUBEDLLOCATION% --no-check-certificate --ignore-errors --ignore-config --continue --yes-playlist --no-part --add-metadata --all-subs --embed-thumbnail --embed-subs -x --audio-format "mp3" --audio-quality 0 --output "%DOWNLOADLOCATION%%%(uploader)s//%%(title)s.%%(ext)s" --batch-file %BATCHFILE% --download-archive %ARCHIVE% --ffmpeg-location %FFMPEGLOCATION%
 ECHO.
 CLS
 GOTO menu
 
 :AHMER
-%YOUTUBEDLLOCATION% --no-check-certificate --ignore-errors --ignore-config --continue --yes-playlist --prefer-ffmpeg --no-part --add-metadata --format %VIDMP4AHMER% --output "%DOWNLOADLOCATION%%%(id)s" --batch-file %BATCHFILE% --download-archive %ARCHIVE% --merge-output-format "mp4" --ffmpeg-location %FFMPEGLOCATION%
+%YOUTUBEDLLOCATION% --no-check-certificate --ignore-errors --ignore-config --continue --yes-playlist --prefer-ffmpeg --no-part --add-metadata --format %VIDMP4AHMER% --output "%DOWNLOADLOCATION%%%(uploader)s//%%(id)s" --batch-file %BATCHFILE% --download-archive %ARCHIVE% --merge-output-format "mp4" --ffmpeg-location %FFMPEGLOCATION%
 ECHO.
 TIMEOUT /T 6 /NOBREAK > NUL
 CLS
