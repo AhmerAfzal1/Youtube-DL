@@ -74,9 +74,9 @@ GOTO menu
 ECHO.
 CLS
 GOTO menu
-
+:: --proxy "SOCKS5://159.89.49.60:31264/"
 :AHMER
-%YOUTUBEDLLOCATION% --no-check-certificate --ignore-errors --ignore-config --continue --yes-playlist --prefer-ffmpeg --no-part --add-metadata --format %VIDMP4AHMER% --output "%DOWNLOADLOCATION%%%(uploader)s//%%(id)s" --batch-file %BATCHFILE% --download-archive %ARCHIVE% --merge-output-format "mp4" --ffmpeg-location %FFMPEGLOCATION%
+%YOUTUBEDLLOCATION% --verbose  --no-check-certificate --ignore-errors --ignore-config --continue --yes-playlist --prefer-ffmpeg --add-metadata --format %VIDMP4AHMER% --output "%DOWNLOADLOCATION%%%(uploader)s//%%(title)s.%%(ext)s" --batch-file %BATCHFILE% --download-archive %ARCHIVE% --merge-output-format "mp4" --ffmpeg-location %FFMPEGLOCATION%
 ECHO.
 TIMEOUT /T 6 /NOBREAK > NUL
 CLS
