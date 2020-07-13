@@ -16,7 +16,7 @@ SET VIDMP4="bestvideo[height<=4320][fps<=60][ext=mp4]+bestaudio[ext=m4a]/bestvid
 
 SET NEWARG="bestvideo[ext=webm][height>=4320][fps=60]+bestaudio/bestvideo[ext=mp4][height>=4320][fps=60]+bestaudio/bestvideo[ext=webm][height>=4320]+bestaudio/bestvideo[ext=mp4]+bestaudio/bestvideo+bestaudio/bestvideo[ext=webm][height>=2160][fps=60]+bestaudio/bestvideo[ext=mp4][height>=2160][fps=60]+bestaudio/bestvideo[ext=webm][height>=2160]+bestaudio/bestvideo[ext=mp4]+bestaudio/bestvideo+bestaudio/bestvideo[ext=webm][height>=1080][fps=60]+bestaudio/bestvideo[ext=mp4][height>=1080][fps=60]+bestaudio/bestvideo[ext=webm][height>=1080]+bestaudio/bestvideo[ext=mp4]+bestaudio/bestvideo+bestaudio/bestvideo[ext=webm][height>=720][fps=60]+bestaudio/bestvideo[ext=mp4][height>=720][fps=60]+bestaudio/bestvideo[ext=webm][height>=720]+bestaudio/bestvideo[ext=mp4]+bestaudio/bestvideo+bestaudio/best"
 
-SET VIDMP4AHMER="bestvideo[height<=720][fps<=60][ext=mp4]+bestaudio[ext=m4a]/mp4"
+SET VIDMP4AHMER="bestvideo[height<=?720][ext=mp4]+bestaudio[ext=m4a]/mp4"
 
 IF NOT EXIST %DOWNLOADLOCATION% MKDIR %DOWNLOADLOCATION%
 
@@ -75,7 +75,7 @@ CLS
 GOTO menu
 
 :AHMER
-%YOUTUBEDLLOCATION% --verbose  --no-check-certificate --ignore-errors --ignore-config --continue --yes-playlist --prefer-ffmpeg --add-metadata --format %VIDMP4AHMER% --output "%DOWNLOADLOCATION%%%(uploader)s//%%(title)s.%%(ext)s" --batch-file %BATCHFILE% --download-archive %ARCHIVE% --merge-output-format "mp4" --ffmpeg-location %FFMPEGLOCATION%
+%YOUTUBEDLLOCATION% --no-check-certificate --ignore-errors --ignore-config --continue --yes-playlist --prefer-ffmpeg --add-metadata --format %VIDMP4AHMER% --output "%DOWNLOADLOCATION%%%(uploader)s//%%(title)s.%%(ext)s" --batch-file %BATCHFILE% --download-archive %ARCHIVE% --merge-output-format "mp4" --ffmpeg-location %FFMPEGLOCATION%
 TIMEOUT /T 6 /NOBREAK > NUL
 CLS
 GOTO menu
