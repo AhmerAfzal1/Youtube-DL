@@ -11,6 +11,7 @@ SET YOUTUBEDLLOCATION="Files//youtube-dl.exe"
 SET FFMPEGLOCATION="Files//"
 SET BATCHFILE="URLs.txt"
 SET ARCHIVE="Downloaded.log"
+FOR /F "USEBACKQ" %%F IN (`powershell -NoLogo -NoProfile -Command ^(Get-Item "%YOUTUBEDLLOCATION%"^).VersionInfo.FileVersion`) DO (SET fileVersion=%%F)
 
 SET VIDMP4="bestvideo[height<=4320][fps<=60][ext=mp4]+bestaudio[ext=m4a]/bestvideo[height<=2160][fps<=60][ext=mp4]+bestaudio[ext=m4a]/bestvideo[height<=1440][fps<=60][ext=mp4]+bestaudio[ext=m4a]/bestvideo[height<=1080][fps<=60][ext=mp4]+bestaudio[ext=m4a]/bestvideo[height<=720][fps<=60][ext=mp4]+bestaudio[ext=m4a]/mp4"
 
@@ -81,8 +82,7 @@ CLS
 GOTO menu
 
 :UPDATE
-ECHO Current version is 
-%YOUTUBEDLLOCATION% --version
+ECHO Youtube-DL current version is %fileVersion%
 %YOUTUBEDLLOCATION% --update
 TIMEOUT /T 6 /NOBREAK > NUL
 CLS
